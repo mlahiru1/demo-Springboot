@@ -14,7 +14,6 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
     @GetMapping("/getUser")
     public List<UserDTO> getUser(){
         return userService.getAllUsers();
@@ -26,8 +25,8 @@ public class UserController {
     }
 
     @PutMapping("/updateUser")
-    public String updateUser(){
-        return "User Updated!";
+    public UserDTO updateUser(@RequestBody UserDTO userDTO){
+        return userService.updateUser(userDTO);
     }
 
     @DeleteMapping("/deleteUser")
